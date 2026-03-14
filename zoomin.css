@@ -153,14 +153,16 @@ body:has(button:hover) #cursor-ring {
 /* ============================================================
    4. NAVIGATION
    ============================================================ */
-nav {
+#nav {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 28px 48px;
-  transition: background .4s var(--ease), padding .4s, border-color .4s;
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(8px);
+  transition: background .4s var(--ease), padding .4s, border-color .4s, backdrop-filter .4s;
 }
-nav.scrolled {
+#nav.scrolled {
   background: rgba(10,10,10,.92);
   backdrop-filter: blur(14px);
   padding: 16px 48px;
@@ -920,11 +922,52 @@ footer { background: var(--black); border-top: 1px solid var(--border-dark); pad
 }
 
 @media (max-width: 768px) {
-  nav { padding: 20px 24px; }
-  nav.scrolled { padding: 14px 24px; }
-  .nav-links, .nav-cta { display: none; }
-  .nav-hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-  .nav-hamburger span { display: block; width: 26px; height: 1px; background: var(--white); transition: transform .3s; }
+  #nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  #nav.scrolled { padding: 12px 24px; }
+  
+  .nav-links {
+    position: fixed; top: 78px; left: 0; right: 0;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    flex-direction: column; align-items: stretch; justify-content: flex-start;
+    gap: 0; z-index: 300;
+    padding: 8px 0 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    display: flex;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .nav-links.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a {
+    display: block; padding: 16px 28px;
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.80);
+    transition: color .2s, padding-left .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); padding-left: 36px; }
+
+  .nav-hamburger {
+    display: flex !important;
+    flex-direction: column; gap: 6px;
+    background: transparent; border: none; cursor: pointer;
+    position: fixed; top: 16px; right: 14px;
+    z-index: 400;
+    padding: 10px;
+  }
+  .nav-hamburger span {
+    display: block; width: 26px; height: 2px;
+    background: #ffffff;
+    transition: transform .3s, opacity .3s;
+    transform-origin: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   section { padding: 70px 24px; }
   .testimonial-section { padding: 80px 24px; }

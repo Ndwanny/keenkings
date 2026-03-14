@@ -46,13 +46,33 @@
 
 
   /* ─────────────────────────────────────────────
-     STICKY NAV + ACTIVE LINK
+     STICKY NAV + ACTIVE LINK + MOBILE TOGGLE
   ───────────────────────────────────────────── */
   var nav = document.getElementById('nav');
+  var hamburger = document.querySelector('.nav-hamburger');
+  var navLinks = document.querySelector('.nav-links');
+
   if (nav) {
     window.addEventListener('scroll', function () {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+  }
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close menu when link is clicked
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
   }
 
   // Mark the current page link as active
