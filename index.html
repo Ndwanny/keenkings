@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Keenkings — Photography Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="zoomin.css"/>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Keen<span>kings</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Session</a>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO — full-screen dark with video bg
+════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <video preload="auto" autoplay loop muted playsinline style="position: absolute; right: 0; bottom: 0; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -2; object-fit: cover; opacity: 0.6;">
+    <source src="video/video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Media Production Studio</span>
+    <h1 class="hero-title">Pictures with <em>Love</em><br/>for Creativity</h1>
+    <p class="hero-desc">Keenkings Media is a dynamic media production company specializing in storytelling, digital content creation, and brand development. We bring your vision to life with precision and passion.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="#about" class="btn-ghost">About Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS BAR — dark
+════════════════════════════════════════════ -->
+<div class="stats-bar stats-bar--dark">
+  <div class="stats-inner">
+    <div class="stat reveal"><div class="stat-number" data-count="15">0<span>+</span></div><div class="stat-label">Team Members</div></div>
+    <div class="stat reveal reveal-delay-1"><div class="stat-number" data-count="290">0<span>+</span></div><div class="stat-label">Total Projects</div></div>
+    <div class="stat reveal reveal-delay-2"><div class="stat-number" data-count="1600">0<span>+</span></div><div class="stat-label">Following</div></div>
+    <div class="stat reveal reveal-delay-3"><div class="stat-number" data-count="240">0<span>+</span></div><div class="stat-label">Happy Clients</div></div>
+  </div>
+</div>
+
+<!-- Accent ticker -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">Portrait Photography</span>
+    <span class="ticker-item">Wedding Stories</span>
+    <span class="ticker-item">Editorial Work</span>
+    <span class="ticker-item">Commercial Shoots</span>
+    <span class="ticker-item">Nature &amp; Landscape</span>
+    <span class="ticker-item">Fine Art Prints</span>
+    <span class="ticker-item">Fashion Photography</span>
+    <span class="ticker-item">Event Coverage</span>
+    <span class="ticker-item">Portrait Photography</span>
+    <span class="ticker-item">Wedding Stories</span>
+    <span class="ticker-item">Editorial Work</span>
+    <span class="ticker-item">Commercial Shoots</span>
+    <span class="ticker-item">Nature &amp; Landscape</span>
+    <span class="ticker-item">Fine Art Prints</span>
+    <span class="ticker-item">Fashion Photography</span>
+    <span class="ticker-item">Event Coverage</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     ABOUT — LIGHT section
+════════════════════════════════════════════ -->
+<section id="about" class="section--light">
+  <div class="about">
+    <!-- Image side -->
+    <div class="about-image reveal-left">
+      <img src="https://i.ibb.co/chZXP5Lp/team-3.jpg" alt="Keenkings Media"/>
+      <div class="about-image-accent"></div>
+      <div class="about-image-label">Est. 2016 · Lusaka</div>
+    </div>
+    <!-- Text side -->
+    <div class="about-content">
+      <span class="section-tag reveal">About the Studio</span>
+      <h2 class="section-title reveal">Where Vision<br/>Meets <em>Innovation</em></h2>
+      <p class="section-body reveal">Keenkings Media is a dynamic media production company specializing in storytelling, digital content creation, and brand development. We are dedicated to producing high-quality visual narratives and brand identities.</p>
+      <blockquote class="about-quote reveal">"Our commitment to creativity, innovation, and integrity drives us to deliver impactful content."</blockquote>
+      <p class="section-body reveal">Established in 2016, we have evolved into a trusted partner for businesses and organizations looking to enhance their digital and media presence. Based in Lusaka, we serve clients with excellence and professionalism.</p>
+      <div class="about-skills reveal">
+        <span class="skill-pill">Photography</span>
+        <span class="skill-pill">Videography</span>
+        <span class="skill-pill">Digital Marketing</span>
+        <span class="skill-pill">Branding</span>
+        <span class="skill-pill">Consultancy</span>
+        <span class="skill-pill">Social Media</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PORTFOLIO — DARK section
+════════════════════════════════════════════ -->
+<section id="portfolio" style="background: var(--black);">
+  <div class="portfolio-section">
+    <div class="portfolio-header">
+      <div>
+        <span class="section-tag reveal">Selected Works</span>
+        <h2 class="section-title reveal">Portfolio</h2>
+      </div>
+      <div class="portfolio-filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="portrait">Portrait</button>
+        <button class="filter-btn" data-filter="wedding">Wedding</button>
+        <button class="filter-btn" data-filter="editorial">Editorial</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+      </div>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item reveal"           data-cat="portrait"  onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80" alt="Portrait"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Portrait</div><div class="portfolio-item-title">Golden Hour</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal reveal-delay-1" data-cat="wedding"  onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80" alt="Wedding"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Wedding</div><div class="portfolio-item-title">Forever Yours</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal reveal-delay-2" data-cat="editorial" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80" alt="Fashion"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Editorial</div><div class="portfolio-item-title">Vogue Series</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item wide reveal" data-cat="nature" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=80" alt="Landscape"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Nature</div><div class="portfolio-item-title">Into the Wild</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal reveal-delay-1" data-cat="portrait"  onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1502764613149-7f1d229e230f?w=700&q=80" alt="Portrait"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Portrait</div><div class="portfolio-item-title">Unseen Light</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal reveal-delay-2" data-cat="wedding"   onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=700&q=80" alt="Wedding"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Wedding</div><div class="portfolio-item-title">First Dance</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal"           data-cat="editorial" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Editorial"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Editorial</div><div class="portfolio-item-title">Autumn Tones</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="portfolio-item reveal reveal-delay-1" data-cat="nature"    onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=700&q=80" alt="Nature"/><div class="portfolio-item-overlay"><div class="portfolio-item-info"><div class="portfolio-item-cat">Nature</div><div class="portfolio-item-title">Morning Mist</div></div></div><div class="portfolio-item-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PARALLAX BANNER 1 — between portfolio & services
+════════════════════════════════════════════ -->
+<div class="parallax-banner">
+  <div class="parallax-bg parallax-bg--subtle"
+       style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80');"
+       data-parallax-speed="0.4"></div>
+  <div class="parallax-banner-content">
+    <span class="section-tag reveal" style="display:block;margin-bottom:16px;">The Art of Seeing</span>
+    <h2 class="parallax-banner-title reveal">Every Frame is a<br/><em>Decision</em></h2>
+    <p class="parallax-banner-body reveal">Photography is not about the camera. It is about the eye, the patience, and the quiet bravery to press the shutter at exactly the right moment.</p>
+    <a href="#portfolio" class="btn-primary reveal">Explore the Work</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES — LIGHT section
+════════════════════════════════════════════ -->
+<section id="services" class="services-section--light">
+  <div class="services-inner">
+    <div class="services-top">
+      <div>
+        <span class="section-tag reveal">What I Offer</span>
+        <h2 class="section-title reveal" style="color: var(--light-heading);">Services &amp;<br/><em>Packages</em></h2>
+      </div>
+      <p class="section-body reveal" style="max-width:380px; color: var(--light-muted);">From intimate portrait sessions to full-scale commercial productions — I tailor every shoot to your vision.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-title">Photography & Visual Assets</div>
+        <p class="service-desc">Expert capturing of key moments for corporate, commercial, and social events, along with product branding and advertising campaigns.</p>
+        <a href="#contact" class="service-link">Book Now →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-title">Corporate & Brand Storytelling</div>
+        <p class="service-desc">High-quality documentaries and compelling stories that highlight achievements and impact for clients from concept to completion.</p>
+        <a href="#contact" class="service-link">Book Now →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-title">Content Production</div>
+        <p class="service-desc">Corporate documentaries, promotional videos, and brand stories that elevate business visibility and market positioning.</p>
+        <a href="#contact" class="service-link">Book Now →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-title">Digital Marketing & Social Media</div>
+        <p class="service-desc">Strategic digital content like short videos and motion graphics specifically for social media to boost engagement and brand awareness.</p>
+        <a href="#contact" class="service-link">Book Now →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">05</div>
+        <div class="service-title">Event Coverage</div>
+        <p class="service-desc">High-quality photography and videography services for weddings, graduations, corporate events, and social gatherings.</p>
+        <a href="#contact" class="service-link">Enquire →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">06</div>
+        <div class="service-title">Media Consultancy</div>
+        <p class="service-desc">Expert consultancy in branding, media production, and marketing strategies to effectively position your brand in the digital space.</p>
+        <a href="#contact" class="service-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS BAR — light, follows the light services
+════════════════════════════════════════════ -->
+<div class="stats-bar stats-bar--light">
+  <div class="stats-inner">
+    <div class="stat reveal"><div class="stat-number" data-count="15">0<span>+</span></div><div class="stat-label">Team Members</div></div>
+    <div class="stat reveal reveal-delay-1"><div class="stat-number" data-count="290">0<span>+</span></div><div class="stat-label">Total Projects</div></div>
+    <div class="stat reveal reveal-delay-2"><div class="stat-number" data-count="1600">0<span>+</span></div><div class="stat-label">Following</div></div>
+    <div class="stat reveal reveal-delay-3"><div class="stat-number" data-count="240">0<span>+</span></div><div class="stat-label">Happy Clients</div></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIAL — dark
+════════════════════════════════════════════ -->
+<div class="testimonial-section testimonial-section--dark">
+  <div class="testimonial-inner" id="testimonialInner">
+    <div class="testimonial-stars">
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+    </div>
+    <p class="testimonial-text" id="testimonialText">"Keenkings Media brought our vision to life with their incredible storytelling. Their passion and creativity are truly unmatched."</p>
+    <div class="testimonial-author">
+      <img class="testimonial-avatar" id="testimonialAvatar" src="https://i.ibb.co/Lhpg3qYZ/team-2.jpg" alt="Client"/>
+      <div>
+        <div class="testimonial-name" id="testimonialName">Joshua Phiri</div>
+        <div class="testimonial-role" id="testimonialRole">Editor, 2024</div>
+      </div>
+    </div>
+    <div class="testimonial-dots">
+      <div class="dot active" onclick="setTestimonial(0)"></div>
+      <div class="dot" onclick="setTestimonial(1)"></div>
+      <div class="dot" onclick="setTestimonial(2)"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PARALLAX BANNER 2 — between testimonial & process
+════════════════════════════════════════════ -->
+<div class="parallax-banner">
+  <div class="parallax-bg"
+       style="background-image: url('https://images.unsplash.com/photo-1483653364400-eedcfb9f1f88?w=1800&q=80');"
+       data-parallax-speed="0.35"></div>
+  <div class="parallax-banner-content">
+    <span class="section-tag reveal" style="display:block;margin-bottom:16px;">Behind the Lens</span>
+    <h2 class="parallax-banner-title reveal"><em>Light</em> Changes<br/>Everything</h2>
+    <p class="parallax-banner-body reveal">From golden-hour portraits to the drama of controlled studio light — the right illumination transforms a good photograph into an unforgettable one.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PROCESS — WHITE section
+════════════════════════════════════════════ -->
+<section id="process" class="section--light-alt">
+  <div class="process-inner">
+    <div class="process-header">
+      <span class="section-tag reveal">How It Works</span>
+      <h2 class="section-title reveal">My Creative <em>Process</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-step-title">Discovery Call</div>
+        <p class="process-step-desc">We start with a conversation. I learn about your vision, goals, and the story you want to tell. No commitment required.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-step-title">Creative Planning</div>
+        <p class="process-step-desc">From location scouting to mood boards, I prepare every detail to ensure your shoot runs smoothly and looks stunning.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-step-title">The Shoot</div>
+        <p class="process-step-desc">On the day, I guide and direct while keeping the atmosphere relaxed and authentic. Great images come from genuine moments.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-step-title">Delivery</div>
+        <p class="process-step-desc">Carefully retouched images delivered via a private gallery within 2–3 weeks. Print-ready files included with every package.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PARALLAX BANNER 3 — CTA strip before contact
+════════════════════════════════════════════ -->
+<div class="parallax-banner">
+  <div class="parallax-bg parallax-bg--subtle"
+       style="background-image: url('https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1800&q=80');"
+       data-parallax-speed="0.45"></div>
+  <div class="parallax-banner-content">
+    <h2 class="parallax-banner-title reveal">Ready to Create<br/>Something <em>Beautiful?</em></h2>
+    <p class="parallax-banner-body reveal">Whether it's a once-in-a-lifetime wedding, a brand campaign, or simply capturing who you are right now — let's talk.</p>
+    <a href="#contact" class="btn-primary reveal">Start a Conversation</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT — LIGHT section
+════════════════════════════════════════════ -->
+<section id="contact" class="contact-section--light">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <span class="section-tag reveal">Get in Touch</span>
+      <h2 class="section-title reveal" style="color: var(--light-heading);">Let's Create<br/><em>Something</em><br/>Beautiful</h2>
+      <p class="section-body reveal" style="color: var(--light-muted);">Ready to start your photography journey? Fill out the form and I'll get back to you within 24 hours to discuss your project.</p>
+      <div class="contact-details">
+        <div class="contact-detail-item reveal">
+          <div class="contact-detail-icon">✉</div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value">keenkingsmedia@gmail.com</div></div>
+        </div>
+        <div class="contact-detail-item reveal reveal-delay-1">
+          <div class="contact-detail-icon">☎</div>
+          <div><div class="contact-detail-label">Phone</div><div class="contact-detail-value">[+260] 977 231 555</div></div>
+        </div>
+        <div class="contact-detail-item reveal reveal-delay-2">
+          <div class="contact-detail-icon">◎</div>
+          <div><div class="contact-detail-label">Studio</div><div class="contact-detail-value">Medoreen Business Park, Plot 36998, Alick Nkhata Road, Mass Media, Lusaka</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"/></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"/></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+      <div class="form-group">
+        <label>Service Interested In</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Photography</option>
+          <option>Videography</option>
+          <option>Digital Marketing</option>
+          <option>Branding Consultancy</option>
+          <option>Content Production</option>
+          <option>Event Coverage</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell Me About Your Project</label><textarea placeholder="Describe your vision, dates, location, any special requests..."></textarea></div>
+      <button class="submit-btn">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+
+
+     FOOTER — always dark
+════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Keen<span>kings</span></a>
+      <p>Dynamic media production studio based in Lusaka. Specializing in storytelling, digital content creation, and brand development since 2016.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+        <a href="#" class="social-link">li</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Portrait Sessions</a></li>
+        <li><a href="#services">Wedding Photography</a></li>
+        <li><a href="#services">Editorial &amp; Fashion</a></li>
+        <li><a href="#services">Commercial Work</a></li>
+        <li><a href="#services">Fine Art Prints</a></li>
+        <li><a href="#services">Workshops</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Pinterest</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Behance</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Keenkings Media. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a></p>
+  </div>
+</footer>
+
+<script src="zoomin.js"></script>
+</body>
+</html>

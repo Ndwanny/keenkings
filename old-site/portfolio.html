@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<title>Gallery Grid Type2 &#8211; JohnBlack</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon"                    href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon"                 href="img/apple_icons_57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72"   href="img/apple_icons_72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple_icons_114x114.png">
+
+	<!-- Fonts -->
+	<link rel="stylesheet" href='css/font-awesome.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,700,900" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,900" rel="stylesheet">
+	<link rel="stylesheet" href='css/font-iconano.css'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    
+	
+	<!-- Theme style -->
+	<link rel='stylesheet' href='css/theme.css' type='text/css' media='all' />
+	
+	<!-- Custom style -->
+	<link rel='stylesheet' href='css/custom.css' type='text/css' media='all' />
+	
+	<!-- Responsive -->
+	<link rel='stylesheet' href='css/responsive.css' type='text/css' media='all' />
+
+	<style>
+		/* General reset and layout */
+        .gallery-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Tab styles */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .tab-button {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-bottom: none;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            transition: background-color 0.2s, border-color 0.2s;
+            margin-bottom: -1px; /* Overlap with the border-bottom of .tab-navigation */
+        }
+        .tab-button:hover {
+            background-color: #e2e6ea;
+        }
+        .tab-button.active {
+            background-color: #ffffff;
+            border-color: #dee2e6;
+            border-bottom-color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Filter section */
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .filter-select, .filter-input {
+            flex: 1 1 100%;
+            max-width: 100%;
+            padding: 0.5rem;
+            font-size: 1.rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 768px) {
+            .filter-select, .filter-input {
+                flex: 1 1 calc(50% - 0.5rem);
+                max-width: calc(50% - 0.5rem);
+            }
+        }
+
+        /* Card grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            cursor: pointer;
+        }
+        @media (max-width: 767.98px) {
+            .card-img-top {
+                height: 60vw;
+            }
+        }
+        .card-body {
+            padding: 1rem;
+            flex: 1;
+        }
+        .card-title {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .video-card {
+            position: relative;
+        }
+        .video-card .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+        .d-none {
+            display: none !important;
+        }
+
+        /* Load More button */
+        .load-more-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .load-more-btn:hover {
+            background-color: #0b5ed7;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.show {
+            display: flex;
+        }
+        .modal-dialog {
+            max-width: 90%;
+            width: 100%;
+            margin: 0;
+        }
+        .modal-xl {
+            max-width: 1200px;
+        }
+        .modal-lg {
+            max-width: 800px;
+        }
+        .modal-content {
+            background: transparent;
+            border: none;
+            position: relative;
+            margin: 0;
+        }
+        .video-modal .modal-content {
+            background: white;
+            margin: 0;
+        }
+        .modal-body {
+            padding: 0;
+            position: relative;
+        }
+        .modal-img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        .video-iframe {
+            width: 100%;
+            height: 60vh;
+            display: block;
+        }
+        .btn-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+        .btn-close::before {
+            content: '×';
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+        }
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+        }
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+         /* Carousel controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            z-index: 100;
+            border-radius: 50%;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+	</style>
+	
+</head>
+
+<body class="page-template page-template-page-albums page-template-page-albums-php page page_with_abs_header dark_color_scheme">
+	<div class="gt3_preloader">
+		<div class="gt3_preloader_content">
+			<div class="arc1"></div>
+			<div class="arc2"></div>
+			<div class="arc3"></div>
+		</div>
+	</div>
+	<div class="main_header">
+		<div class="header_parent_wrap">
+			<header>
+				<div class="logo_sect" data-height="85">
+					<a href="index.html" class="logo">
+						<!-- Logo -->
+						<img src="img/custom_logo.png" alt="" width="105" height="85">
+					</a>
+				</div>
+				<div class="fright">
+					<nav class="menu-main-menu-container">
+						<ul id="menu-main-menu" class="menu">
+							<li class="menu-item menu-item-type-custom  menu-item-object-custom ">
+								<a href="index.html">Home</a>
+								
+							</li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item">
+								<a href="portfolio.html">Portfolio</a>
+								
+							</li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom ">
+								<a href="services.html">Services</a>
+								
+							</li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom ">
+								<a href="about.html">About</a>
+								
+							</li>
+							
+							<li class="menu-item menu-item-type-post_type menu-item-object-page  page_item current_page_item">
+								<a href="contacts.html">Contact</a>
+							</li>
+						</ul>
+					</nav>
+					
+					
+					
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</header>
+		</div>
+	</div>
+	<div class="header_holder"></div>
+	<div class="mobile_menu_wrapper"></div>
+	<div class="sticky_menu_enabled"></div>
+	<div class="wrapper">
+		<div class="gallery-container">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="openTab('photography')">Photography</button>
+            <button class="tab-button" onclick="openTab('videography')">Videography</button>
+            <button class="tab-button" onclick="openTab('graphics')">Graphics</button>
+        </div>
+
+        <div id="photography-content" class="tab-content">
+            <div class="filter-section">
+                <select class="filter-select" id="filterByCategoryPhotography" onchange="searchFilter('photography')">
+                    <option value="" selected>Filter by Category</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="chilanga-mulilo">Chilanga-Mulilo</option>
+                    <option value="indoor">Indoor</option>
+                    <option value="outdoor">Outdoor</option>
+                    <option value="studio">Studio</option>
+                    <option value="corporate">Corporate</option>
+                    <option value="creative">Creative</option>
+                </select>
+                <input type="text" class="filter-input" placeholder="Search photography" aria-label="Search photography" onkeyup="searchFilter('photography')">
+            </div>
+            <div class="grid-cards photography-grid">
+                <div class="col graduation">
+                    <div class="card">
+                        <img src="https://i.ibb.co/dS0ng0h/gd-1.jpg" class="card-img-top" alt="Graduation" onclick="showImage(0, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Graduation</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col graduation">
+                    <div class="card">
+                        <img src="https://i.ibb.co/cK83N1xq/gd-2.jpg" class="card-img-top" alt="Graduation" onclick="showImage(1, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Graduation</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col graduation">
+                    <div class="card">
+                        <img src="https://i.ibb.co/RkrkC01J/gd-3.jpg" class="card-img-top" alt="Graduation" onclick="showImage(2, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Graduation</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col wedding">
+                    <div class="card">
+                        <img src="https://i.ibb.co/ccxwnLHr/wed-1.jpg" class="card-img-top" alt="Wedding" onclick="showImage(3, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Wedding</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col wedding">
+                    <div class="card">
+                        <img src="https://i.ibb.co/zhhZ0YVc/wed-2.jpg" class="card-img-top" alt="Wedding" onclick="showImage(4, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Wedding</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col wedding">
+                    <div class="card">
+                        <img src="https://i.ibb.co/1Gnpq7fz/wed-3.jpg" class="card-img-top" alt="Wedding" onclick="showImage(5, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Wedding</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col chilanga-mulilo">
+                    <div class="card">
+                        <img src="https://i.ibb.co/LdPBN8Tx/cm-1.jpg" class="card-img-top" alt="Chilanga-Mulilo" onclick="showImage(6, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Chilanga-Mulilo</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col chilanga-mulilo">
+                    <div class="card">
+                        <img src="https://i.ibb.co/Tx3mtD8K/cm-2.jpg" class="card-img-top" alt="Chilanga-Mulilo" onclick="showImage(7, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Chilanga-Mulilo</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col chilanga-mulilo">
+                    <div class="card">
+                        <img src="https://i.ibb.co/nMyVJ6Wc/cm-3.jpg" class="card-img-top" alt="Chilanga-Mulilo" onclick="showImage(8, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Chilanga-Mulilo</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col indoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/gZ51TRXs/ind-1.jpg" class="card-img-top" alt="Indoor" onclick="showImage(9, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Indoor</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col indoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/4ZC1vs0M/ind-2.jpg" class="card-img-top" alt="Indoor" onclick="showImage(10, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Indoor</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col indoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/zhSP1Jq3/ind-3.jpg" class="card-img-top" alt="Indoor" onclick="showImage(11, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Indoor</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col outdoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/3YmXSzcQ/out-1.jpg" class="card-img-top" alt="Outdoor" onclick="showImage(12, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Outdoor</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col outdoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/RkVQHSvW/out-2.jpg" class="card-img-top" alt="Outdoor" onclick="showImage(13, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Outdoor</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col outdoor">
+                    <div class="card">
+                        <img src="https://i.ibb.co/VWdMX16G/out-3.jpg" class="card-img-top" alt="Outdoor" onclick="showImage(14, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Outdoor</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col studio">
+                    <div class="card">
+                        <img src="https://i.ibb.co/zVMCnpD1/stu-1.jpg" class="card-img-top" alt="Studio" onclick="showImage(15, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Studio</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col studio">
+                    <div class="card">
+                        <img src="https://i.ibb.co/0yZvhY1c/stu-2.jpg" class="card-img-top" alt="Studio" onclick="showImage(16, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Studio</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col studio">
+                    <div class="card">
+                        <img src="https://i.ibb.co/Y4r1Ykj8/stu-3.jpg" class="card-img-top" alt="Studio" onclick="showImage(17, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Studio</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col corporate">
+                    <div class="card">
+                        <img src="https://i.ibb.co/Pzsn97fm/cp-1.jpg" class="card-img-top" alt="Corporate" onclick="showImage(18, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Corporate</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col corporate">
+                    <div class="card">
+                        <img src="https://i.ibb.co/JRRP5fjx/cp-2.jpg" class="card-img-top" alt="Corporate" onclick="showImage(19, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Corporate</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col corporate">
+                    <div class="card">
+                        <img src="https://i.ibb.co/Z1f6nWZy/cp-3.jpg" class="card-img-top" alt="Corporate" onclick="showImage(20, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Corporate</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col creative">
+                    <div class="card">
+                        <img src="https://i.ibb.co/PZTq47BR/crt-1.jpg" class="card-img-top" alt="Creative" onclick="showImage(21, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Creative</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col creative">
+                    <div class="card">
+                        <img src="https://i.ibb.co/v6jb3dYG/crt-2.jpg" class="card-img-top" alt="Creative" onclick="showImage(22, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Creative</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col creative">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=435&q=80" 
+                            class="card-img-top" alt="Creative" onclick="showImage(23, 'photography')">
+                        <div class="card-body">
+                            <h5 class="card-title">Creative</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="load-more-btn" onclick="loadMoreCards('photography')">Load More</button>
+        </div>
+
+        <div id="videography-content" class="tab-content d-none">
+            <div class="filter-section">
+                <select class="filter-select" id="filterByCategoryVideography" onchange="searchFilter('videography')">
+                    <option value="" selected>Filter by Category</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="corporate">Corporate</option>
+                    <option value="creative">Creative</option>
+                    <option value="nature">Nature</option>
+                    <option value="timelapse">Time-Lapse</option>
+                    <option value="product">Product</option>
+                    <option value="fashion">Fashion</option>
+                </select>
+                <input type="text" class="filter-input" placeholder="Search videography" aria-label="Search videography" onkeyup="searchFilter('videography')">
+            </div>
+            <div class="grid-cards videography-grid">
+                <div class="col nature">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 1" onclick="showVideo('LXb3EKWsInQ')">
+                        <i class="fa-solid fa-play play-icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Epic Nature Drone Video</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col timelapse">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 2" onclick="showVideo('LXb3EKWsInQ')">
+                        <i class="fa-solid fa-play play-icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Time-Lapse Cityscape</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col wedding">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 3" onclick="showVideo('LXb3EKWsInQ')">
+                        <i class="fa-solid fa-play play-icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Wedding Highlight Reel</h5>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col corporate">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 4" onclick="showVideo('LXb3EKWsInQ')">
+                        <i class="fa-solid fa-play play-icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Corporate Event Coverage</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col product">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 5" onclick="showVideo('LXb3EKWsInQ')">
+                        <i class="fa-solid fa-play play-icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Product Commercial</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col fashion">
+                    <div class="card video-card">
+                        <img src="https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg" class="card-img-top" alt="Video Thumbnail 6" onclick="showVideo('LXb3EKWsInQ')">
+                        <div class="card-body">
+                            <h5 class="card-title">Fashion Show Video</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="load-more-btn" onclick="loadMoreCards('videography')">Load More</button>
+        </div>
+
+        <div id="graphics-content" class="tab-content d-none">
+            <div class="filter-section">
+                <select class="filter-select" id="filterByCategoryGraphics" onchange="searchFilter('graphics')">
+                    <option value="" selected>Filter by Category</option>
+                    <option value="logo">Logo Design</option>
+                    <option value="brochure">Brochure Layout</option>
+                    <option value="banner">Web Banner</option>
+                    <option value="social-media">Social Media Post</option>
+                    <option value="infographic">Infographic</option>
+                    <option value="packaging">Packaging Design</option>
+                </select>
+                <input type="text" class="filter-input" placeholder="Search graphics" aria-label="Search graphics" onkeyup="searchFilter('graphics')">
+            </div>
+            <div class="grid-cards graphics-grid">
+                <div class="col logo">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 1" onclick="showImage(0, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Logo Design</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col brochure">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 2" onclick="showImage(1, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Brochure Layout</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col banner">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 3" onclick="showImage(2, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Banner</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col social-media">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 4" onclick="showImage(3, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Social Media Post</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col infographic">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 5" onclick="showImage(4, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Infographic</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col packaging">
+                    <div class="card">
+                        <img src="https://i.ibb.co/C5ZP92ch/gd.jpg" class="card-img-top" alt="Graphic Design 6" onclick="showImage(5, 'graphics')">
+                        <div class="card-body">
+                            <h5 class="card-title">Packaging Design</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="load-more-btn" onclick="loadMoreCards('graphics')">Load More</button>
+        </div>
+    </div>
+
+    <div class="modal" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" aria-label="Close" onclick="closeModal('imageModal')"></button>
+                    <div class="carousel" id="imageCarousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="" class="modal-img" alt="">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" onclick="navigateCarousel(-1, currentMediaType)">
+                            <span class="fas fa-chevron-left"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" onclick="navigateCarousel(1, currentMediaType)">
+                            <span class="fas fa-chevron-right"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal video-modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" aria-label="Close" onclick="closeModal('videoModal')"></button>
+                    <iframe class="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<!-- .wrapper -->
+	<div class="footer">
+		<div class="footer_wrapper" data-pad-top="15" data-pad-bottom="15">
+			<div class="copyright">&copy; 2025 Keen Kings | by <a href="https://portfolio-u312.onrender.com/">kondwani tech</a></div>
+			<div class="foot_info_block">
+				<ul class="social_icons">
+					<li>
+						<a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+					</li>
+					<li>
+						<a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+					</li>
+					<li>
+						<a title="Behance" href="#"><i class="fa fa-behance"></i></a>
+					</li>
+					<li>
+						<a title="Pinterest" href="#"><i class="fa fa-pinterest"></i></a>
+					</li>
+					<li>
+						<a title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<a href="#" class="back2top" title="Back to Top">Back to Top</a>
+	
+
+	<script>
+        const photographyImages = [
+            // Graduation
+            { src: "https://i.ibb.co/dS0ng0h/gd-1.jpg", alt: "Graduation", category: "graduation", title: "Graduation" },
+            { src: "https://i.ibb.co/cK83N1xq/gd-2.jpg", alt: "Graduation", category: "graduation", title: "Graduation" },
+            { src: "https://i.ibb.co/RkrkC01J/gd-3.jpg", alt: "Graduation", category: "graduation", title: "Graduation" },
+            // Wedding
+            { src: "https://i.ibb.co/ccxwnLHr/wed-1.jpg", alt: "Wedding", category: "wedding", title: "Wedding" },
+            { src: "https://i.ibb.co/zhhZ0YVc/wed-2.jpg", alt: "Wedding", category: "wedding", title: "Wedding" },
+            { src: "https://i.ibb.co/1Gnpq7fz/wed-3.jpg", alt: "Wedding", category: "wedding", title: "Wedding" },
+            // Chilanga-Mulilo
+            { src: "https://i.ibb.co/LdPBN8Tx/cm-1.jpg", alt: "Chilanga-Mulilo", category: "chilanga-mulilo", title: "Chilanga-Mulilo" },
+            { src: "https://i.ibb.co/Tx3mtD8K/cm-2.jpg", alt: "Chilanga-Mulilo", category: "chilanga-mulilo", title: "Chilanga-Mulilo" },
+            { src: "https://i.ibb.co/nMyVJ6Wc/cm-3.jpg", alt: "Chilanga-Mulilo", category: "chilanga-mulilo", title: "Chilanga-Mulilo" },
+            // Indoor
+            { src: "https://i.ibb.co/gZ51TRXs/ind-1.jpg", alt: "Indoor", category: "indoor", title: "Indoor" },
+            { src: "https://i.ibb.co/4ZC1vs0M/ind-2.jpg", alt: "Indoor", category: "indoor", title: "Indoor" },
+            { src: "https://i.ibb.co/zhSP1Jq3/ind-3.jpg", alt: "Indoor", category: "indoor", title: "Indoor" },
+            // Outdoor
+            { src: "https://i.ibb.co/3YmXSzcQ/out-1.jpg", alt: "Outdoor", category: "outdoor", title: "Outdoor" },
+            { src: "https://i.ibb.co/RkVQHSvW/out-2.jpg", alt: "Outdoor", category: "outdoor", title: "Outdoor" },
+            { src: "https://i.ibb.co/VWdMX16G/out-3.jpg", alt: "Outdoor", category: "outdoor", title: "Outdoor" },
+            // Studio
+            { src: "https://i.ibb.co/zVMCnpD1/stu-1.jpg", alt: "Studio", category: "studio", title: "Studio" },
+            { src: "https://i.ibb.co/0yZvhY1c/stu-2.jpg", alt: "Studio", category: "studio", title: "Studio" },
+            { src: "https://i.ibb.co/Y4r1Ykj8/stu-3.jpg", alt: "Studio", category: "studio", title: "Studio" },
+            // Corporate
+            { src: "https://i.ibb.co/Pzsn97fm/cp-1.jpg", alt: "Corporate", category: "corporate", title: "Corporate" },
+            { src: "https://i.ibb.co/JRRP5fjx/cp-2.jpg", alt: "Corporate", category: "corporate", title: "Corporate" },
+            { src: "https://i.ibb.co/Z1f6nWZy/cp-3.jpg", alt: "Corporate", category: "corporate", title: "Corporate" },
+            // Creative
+            { src: "https://i.ibb.co/PZTq47BR/crt-1.jpg", alt: "Creative", category: "creative", title: "Creative" },
+            { src: "https://i.ibb.co/v6jb3dYG/crt-2.jpg", alt: "Creative", category: "creative", title: "Creative" },
+            { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=435&q=80", alt: "Creative", category: "creative", title: "Creative" }
+        ];
+
+        const videographyVideos = [
+            { src: "LXb3EKWsInQ", alt: "Epic Nature Drone Video", title: "Epic Nature Drone Video", category: "nature" },
+            { src: "LXb3EKWsInQ", alt: "Time-Lapse Cityscape", title: "Time-Lapse Cityscape", category: "timelapse" },
+            { src: "LXb3EKWsInQ", alt: "Wedding Highlight Reel", title: "Wedding Highlight Reel", category: "wedding" },
+            { src: "LXb3EKWsInQ", alt: "Corporate Event Coverage", title: "Corporate Event Coverage", category: "corporate" },
+            { src: "LXb3EKWsInQ", alt: "Product Commercial", title: "Product Commercial", category: "product" },
+            { src: "LXb3EKWsInQ", alt: "Fashion Show Video", title: "Fashion Show Video", category: "fashion" }
+        ];
+
+        const graphicsImages = [
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Logo Design", title: "Logo Design", category: "logo" },
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Brochure Layout", title: "Brochure Layout", category: "brochure" },
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Web Banner", title: "Web Banner", category: "banner" },
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Social Media Post", title: "Social Media Post", category: "social-media" },
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Infographic", title: "Infographic", category: "infographic" },
+            { src: "https://i.ibb.co/C5ZP92ch/gd.jpg", alt: "Packaging Design", title: "Packaging Design", category: "packaging" }
+        ];
+
+        let currentImageIndex = 0;
+        let currentMediaType = 'photography'; // To keep track of the active media type for carousel
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function openTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tabContent => {
+                tabContent.classList.add('d-none');
+            });
+
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(`${tabName}-content`).classList.remove('d-none');
+
+            // Activate the clicked tab button
+            document.querySelector(`.tab-button[onclick="openTab('${tabName}')"]`).classList.add('active');
+
+            // Reset load more and filtering when changing tabs
+            currentMediaType = tabName;
+            initializeGallery(tabName);
+            searchFilter(tabName); // Apply initial filter
+        }
+
+        function showImage(index, mediaType) {
+            currentImageIndex = index;
+            let mediaArray;
+            if (mediaType === 'photography') {
+                mediaArray = photographyImages;
+            } else if (mediaType === 'graphics') {
+                mediaArray = graphicsImages;
+            }
+
+            const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
+            carouselInner.innerHTML = '';
+            const item = document.createElement('div');
+            item.className = 'carousel-item active';
+            const img = document.createElement('img');
+            img.src = mediaArray[index].src;
+            img.alt = mediaArray[index].alt;
+            img.className = 'modal-img';
+            item.appendChild(img);
+            carouselInner.appendChild(item);
+            document.getElementById('imageModal').classList.add('show');
+        }
+
+        function showVideo(videoId) {
+            const videoModal = document.getElementById('videoModal');
+            const videoIframe = videoModal.querySelector('.video-iframe');
+            videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            videoModal.classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            if (modalId === 'videoModal') {
+                modal.querySelector('.video-iframe').src = ''; // Stop video playback
+            }
+        }
+
+        function navigateCarousel(direction, mediaType) {
+            let mediaArray;
+            if (mediaType === 'photography') {
+                mediaArray = photographyImages;
+            } else if (mediaType === 'graphics') {
+                mediaArray = graphicsImages;
+            }
+
+            currentImageIndex = (currentImageIndex + direction + mediaArray.length) % mediaArray.length;
+            showImage(currentImageIndex, mediaType);
+        }
+
+        function searchFilter(mediaType) {
+            const filterSelect = document.getElementById(`filterByCategory${mediaType.charAt(0).toUpperCase() + mediaType.slice(1)}`);
+            const filterInput = document.querySelector(`#${mediaType}-content .filter-input`);
+            
+            const selectedCategory = filterSelect ? filterSelect.value : '';
+            const searchText = filterInput.value.toLowerCase();
+            const cards = document.querySelectorAll(`#${mediaType}-content .grid-cards .col`);
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const matchesCategory = selectedCategory === '' || card.classList.contains(selectedCategory);
+                const matchesSearch = title.includes(searchText);
+
+                if (matchesCategory && matchesSearch) {
+                    card.classList.remove('d-none');
+                    visibleCount++;
+                } else {
+                    card.classList.add('d-none');
+                }
+            });
+
+            // Update Load More button visibility for the active tab
+            const loadMoreBtn = document.querySelector(`#${mediaType}-content .load-more-btn`);
+            if (loadMoreBtn) {
+                const hiddenCardsCount = Array.from(cards).filter(card => card.classList.contains('d-none')).length;
+                loadMoreBtn.style.display = hiddenCardsCount > 0 ? 'block' : 'none';
+            }
+        }
+
+        function loadMoreCards(mediaType) {
+            const cards = document.querySelectorAll(`#${mediaType}-content .grid-cards .col.d-none`);
+            const cardsToShow = Array.from(cards).slice(0, 9); // Load 9 more cards
+            cardsToShow.forEach(card => card.classList.remove('d-none'));
+
+            const remainingCards = document.querySelectorAll(`#${mediaType}-content .grid-cards .col.d-none`).length;
+            if (remainingCards === 0) {
+                document.querySelector(`#${mediaType}-content .load-more-btn`).style.display = 'none';
+            }
+        }
+
+        function initializeGallery(mediaType) {
+            const cards = document.querySelectorAll(`#${mediaType}-content .grid-cards .col`);
+            // Hide all cards first
+            cards.forEach(card => card.classList.add('d-none'));
+
+            // Show the first 9 cards
+            for (let i = 0; i < Math.min(9, cards.length); i++) {
+                cards[i].classList.remove('d-none');
+            }
+
+            // Set initial state of Load More button
+            const loadMoreBtn = document.querySelector(`#${mediaType}-content .load-more-btn`);
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = cards.length > 9 ? 'block' : 'none';
+            }
+        }
+
+        // Initialize: Set up event listeners and show the default tab
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initially show the photography tab
+            openTab('photography');
+
+            // Swipe detection for image modal
+            const carousel = document.getElementById('imageCarousel');
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDistance = touchEndX - touchStartX;
+                if (swipeDistance > 50) {
+                    navigateCarousel(-1, currentMediaType); // Swipe right -> previous
+                } else if (swipeDistance < -50) {
+                    navigateCarousel(1, currentMediaType); // Swipe left -> next
+                }
+            });
+
+            // Add keyboard navigation for carousel
+            document.addEventListener('keydown', (e) => {
+                const imageModal = document.getElementById('imageModal');
+                if (imageModal.classList.contains('show')) {
+                    if (e.key === 'ArrowLeft') {
+                        navigateCarousel(-1, currentMediaType);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateCarousel(1, currentMediaType);
+                    }
+                }
+            });
+
+            // Close modals on backdrop click
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+
+            // Close modals on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal.show').forEach(modal => {
+                        closeModal(modal.id);
+                    });
+                }
+            });
+        });
+    </script>
+	<!-- Main scripts -->
+	<script src='js/jquery/jquery.js'></script>
+	<script src='js/jquery/jquery-migrate.min.js'></script>
+	
+	<!-- Plugins -->
+	<script src='js/plugins/jquery.scrollTo.js'></script>
+	
+	
+	
+	
+	<!-- Init -->
+	<script src='js/theme.js'></script>
+	
+</body>
+
+</html>
