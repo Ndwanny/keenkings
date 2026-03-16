@@ -50,30 +50,30 @@
    ============================================================ */
 :root {
   /* Dark palette */
-  --black:           #0a0a0a;
-  --off-black:       #111111;
-  --dark:            #181818;
-  --mid:             #2a2a2a;
+  --black:           #000000;
+  --off-black:       #000000;
+  --dark:            #000000;
+  --mid:             rgba(255,255,255,0.08);
   --border-dark:     rgba(255,255,255,0.10);
-  --border-dark-hov: rgba(200,169,110,0.35);
+  --border-dark-hov: rgba(255,255,255,0.35);
   --white:           #ffffff;
-  --off-white:       #e8e4dc;
+  --off-white:       #ffffff;
   --muted-dark:      rgba(255,255,255,0.50);
 
   /* Light palette */
-  --light-bg:        #f8f5f0;
+  --light-bg:        #ffffff;
   --light-bg-alt:    #ffffff;
-  --light-surface:   #ede9e1;
+  --light-surface:   rgba(0,0,0,0.04);
   --light-border:    rgba(0,0,0,0.10);
-  --light-border-hov:rgba(180,130,50,0.45);
-  --light-text:      #1c1c1a;
-  --light-muted:     rgba(28,28,26,0.50);
-  --light-heading:   #0d0d0b;
+  --light-border-hov:rgba(0,0,0,0.35);
+  --light-text:      #000000;
+  --light-muted:     rgba(0,0,0,0.50);
+  --light-heading:   #000000;
 
-  /* Accent — slightly adjusted per context */
-  --accent:          #c8a96e;
-  --accent-dark:     #a8893e;
-  --accent-light:    #b8924a;
+  /* Accent — black & white only */
+  --accent:          #ffffff;
+  --accent-dark:     #000000;
+  --accent-light:    #000000;
 
   /* Shared aliases (default = dark mode) */
   --border:          var(--border-dark);
@@ -175,19 +175,19 @@ body:has(button:hover) #cursor-ring {
   color: var(--white); text-decoration: none;
   transition: color .3s;
 }
-.nav-logo span { color: var(--accent); }
+.nav-logo span { color: var(--white); }
 
 .nav-links { display: flex; gap: 36px; }
 .nav-links a {
-  font-size: 12px; font-weight: 400;
-  letter-spacing: .2em; text-transform: uppercase;
+  font-size: 15px; font-weight: 400;
+  letter-spacing: .15em; text-transform: uppercase;
   color: var(--muted-dark); text-decoration: none;
   transition: color .3s; position: relative;
 }
 .nav-links a::after {
   content: '';
   position: absolute; bottom: -4px; left: 0; right: 100%;
-  height: 1px; background: var(--accent);
+  height: 1px; background: var(--white);
   transition: right .3s var(--ease);
 }
 .nav-links a:hover,
@@ -198,7 +198,7 @@ body:has(button:hover) #cursor-ring {
 .nav-cta {
   font-size: 11px; font-weight: 400;
   letter-spacing: .2em; text-transform: uppercase;
-  color: var(--black); background: var(--accent);
+  color: var(--black); background: var(--white);
   padding: 10px 24px; text-decoration: none;
   transition: opacity .3s;
 }
@@ -371,9 +371,9 @@ body:has(button:hover) #cursor-ring {
 .stat-number {
   font-family: var(--font-serif);
   font-size: 52px; font-weight: 300;
-  color: var(--white); line-height: 1; margin-bottom: 8px;
+  color: #ffffff; line-height: 1; margin-bottom: 8px;
 }
-.stat-number span { color: var(--accent); }
+.stat-number span { color: #ffffff; }
 .stat-label {
   font-size: 11px; letter-spacing: .2em;
   text-transform: uppercase; color: var(--muted-dark);
@@ -628,7 +628,7 @@ section { padding: var(--space-2xl) var(--space-xl); }
 .services-section      { background: var(--off-black); }
 .services-section--light { background: var(--light-bg); }
 .services-section--light .service-card { background: var(--light-bg-alt); border-color: var(--light-border); }
-.services-section--light .service-num   { color: rgba(0,0,0,.05); }
+.services-section--light .service-num   { color: rgba(0,0,0,0.15); }
 .services-section--light .service-title { color: var(--light-heading); }
 .services-section--light .service-desc  { color: var(--light-muted); }
 .services-section--light .service-link  { color: var(--accent-light); }
@@ -944,11 +944,11 @@ footer { background: var(--black); border-top: 1px solid var(--border-dark); pad
   .nav-links li:last-child { border-bottom: none; }
   .nav-links a {
     display: block; padding: 16px 28px;
-    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.80);
+    font-size: 18px; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
     transition: color .2s, padding-left .2s;
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); padding-left: 36px; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); padding-left: 36px; }
 
   .nav-hamburger {
     display: flex !important;
